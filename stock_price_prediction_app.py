@@ -29,7 +29,7 @@ start = datetime(end.year-20, end.month, end.day)
 stock_data = yf.download(stock, start, end)
 
 # Load the pre-trained model
-model = load_model("stock_price_prediction_model.keras")
+model = load_model("models/stock_price_prediction_model.keras")
 
 # Display stock data
 st.subheader("Stock Data")
@@ -51,17 +51,18 @@ def plot_graph(figsize, values, full_data, extra_data=0, extra_dataset=None):
 
 
 # Plot Moving Averages
-st.subheader('Original Close Price and MA for 250 days')
-stock_data['MA_for_250_days'] = stock_data.Close.rolling(250).mean()
-st.pyplot(plot_graph((15, 6), stock_data['MA_for_250_days'], stock_data))
+
+st.subheader('Original Close Price and MA for 100 days')
+stock_data['MA_for_100_days'] = stock_data.Close.rolling(100).mean()
+st.pyplot(plot_graph((15, 6), stock_data['MA_for_100_days'], stock_data))
 
 st.subheader('Original Close Price and MA for 200 days')
 stock_data['MA_for_200_days'] = stock_data.Close.rolling(200).mean()
 st.pyplot(plot_graph((15, 6), stock_data['MA_for_200_days'], stock_data))
 
-st.subheader('Original Close Price and MA for 100 days')
-stock_data['MA_for_100_days'] = stock_data.Close.rolling(100).mean()
-st.pyplot(plot_graph((15, 6), stock_data['MA_for_100_days'], stock_data))
+st.subheader('Original Close Price and MA for 250 days')
+stock_data['MA_for_250_days'] = stock_data.Close.rolling(250).mean()
+st.pyplot(plot_graph((15, 6), stock_data['MA_for_250_days'], stock_data))
 
 st.subheader('Original Close Price and MA for 100 days and MA for 250 days')
 st.pyplot(plot_graph(
