@@ -1,7 +1,8 @@
+streamlit
 yfinance
 numpy
 pandas
 matplotlib
 scikit-learn
-keras==2.14.0
-tensorflow==2.14.0
+tensorflow==2.16.2
+keras==3.4.1
